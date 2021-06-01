@@ -22,5 +22,8 @@
     "smart",
     "contracts",
     "security"
-  ]
+  ],
+  "devDependencies": {
+    "hardhat": "^2.3.0"
+  }
 }
