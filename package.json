@@ -1,0 +1,29 @@
+{
+  "name": "@conflux-dev/contracts",
+  "version": "0.1.0",
+  "description": "Common useful contracts in Conflux DAPP developments",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conflux-fans/conflux-contracts.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/conflux-fans/conflux-contracts/issues"
+  },
+  "homepage": "https://github.com/conflux-fans/conflux-contracts#readme",
+  "keywords": [
+    "solidity",
+    "conflux",
+    "smart",
+    "contracts",
+    "security"
+  ],
+  "devDependencies": {
+    "hardhat": "^2.3.0"
+  }
+}
