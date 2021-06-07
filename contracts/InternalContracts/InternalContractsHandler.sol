@@ -21,8 +21,8 @@ abstract contract InternalContractsHandler is ERC1820Context {
         users[0] = address(0);
         SponsorWhitelistControl(0x0888000000000000000000000000000000000001).addPrivilege(users);
 
-         // remove contract admin
-         AdminControl ac = AdminControl(0x0888000000000000000000000000000000000000);
+        // remove contract admin
+        AdminControl ac = AdminControl(0x0888000000000000000000000000000000000000);
         ac.setAdmin(address(this), address(0));
         require(
             ac.getAdmin(address(this)) == address(0),
