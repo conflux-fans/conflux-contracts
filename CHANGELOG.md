@@ -1,4 +1,4 @@
 
 # v0.1.0
 
-* internal contracts
+* Internal contracts and utilities.
