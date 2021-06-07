@@ -12,7 +12,7 @@ import "./AdminControl.sol";
 abstract contract InternalContractsHandler is ERC1820Context {
 
     constructor() {
-        if (!_cfxChain) {
+        if (!_isCfxChain()) {
             return;
         }
 
