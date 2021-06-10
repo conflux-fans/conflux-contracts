@@ -1,5 +1,5 @@
 {
-  "name": "@conflux-dev/contracts",
+  "name": "@confluxfans/solidity",
   "version": "0.1.0",
   "description": "Common useful contracts in Conflux DAPP developments",
   "main": "index.js",

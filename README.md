@@ -6,8 +6,25 @@ Common useful contracts in Conflux DAPP developments. Code
 
 ## Overview
 
+### Install
 ```sh
-$ npm install @conflux-dev/contracts
+$ npm install @confluxfans/contracts
+```
+
+### How to Use
+```js
+// contracts/MyNFT.sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@confluxfans/contracts/InternalContracts/AdminControl.sol";
+
+contract YourContract {
+  AdminControl adminControl = AdminControl(0x0888000000000000000000000000000000000000);
+  
+  constructor() public {
+  }
+}
 ```
 
 
