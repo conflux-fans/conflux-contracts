@@ -16,7 +16,6 @@ contract Multicall {
         bytes callData;
     }
 
-
     struct Result {
         bool success;
         bytes returnData;
