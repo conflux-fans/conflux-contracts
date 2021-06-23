@@ -25,6 +25,6 @@
   ],
   "devDependencies": {
     "hardhat": "^2.3.0",
-    "@openzeppelin/contracts": "4.1.0"
+    "@openzeppelin/contracts": "^4.1.0"
   }
 }
