@@ -11,8 +11,8 @@ import "@openzeppelin/contracts/utils/introspection/IERC1820Registry.sol";
 abstract contract ERC1820Context {
     using Address for address;
 
-    address constant private _ERC1820_REGISTRY_ETH = 0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24;
-    address constant private _ERC1820_REGISTRY_CFX = 0x88887eD889e776bCBe2f0f9932EcFaBcDfCd1820;
+    address private constant _ERC1820_REGISTRY_ETH = 0x1820a4B7618BdE71Dce8cdc73aAB6C95905faD24;
+    address private constant _ERC1820_REGISTRY_CFX = 0x88887eD889e776bCBe2f0f9932EcFaBcDfCd1820;
 
     function _isCfxChain() internal view returns (bool) {
         return !_ERC1820_REGISTRY_ETH.isContract();

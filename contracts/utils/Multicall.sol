@@ -8,7 +8,6 @@ import "@openzeppelin/contracts/utils/Address.sol";
  * @dev Aggregate results from multiple read-only function calls.
  */
 contract Multicall {
-
     using Address for address;
 
     struct Call {
@@ -21,7 +20,11 @@ contract Multicall {
         bytes returnData;
     }
 
-    function _staticCall(bool requireSuccess, address target, bytes memory data) internal view returns (Result memory) {
+    function _staticCall(
+        bool requireSuccess,
+        address target,
+        bytes memory data
+    ) internal view returns (Result memory) {
         require(target.isContract(), "Multicall: static call to non-contract");
 
         (bool success, bytes memory returnData) = target.staticcall(data);
@@ -43,7 +46,7 @@ contract Multicall {
     function aggregate(address target, bytes[] memory calldatas) public view returns (bytes[] memory) {
         bytes[] memory results = new bytes[](calldatas.length);
 
-        for(uint256 i = 0; i < calldatas.length; i++) {
+        for (uint256 i = 0; i < calldatas.length; i++) {
             results[i] = _staticCall(true, target, calldatas[i]).returnData;
         }
 
@@ -55,7 +58,7 @@ contract Multicall {
 
         bytes[] memory results = new bytes[](calldatas.length);
 
-        for(uint256 i = 0; i < calldatas.length; i++) {
+        for (uint256 i = 0; i < calldatas.length; i++) {
             results[i] = _staticCall(true, targets[i], calldatas[i]).returnData;
         }
 
@@ -65,27 +68,35 @@ contract Multicall {
     function aggregate(Call[] memory calls) public view returns (bytes[] memory) {
         bytes[] memory results = new bytes[](calls.length);
 
-        for(uint256 i = 0; i < calls.length; i++) {
+        for (uint256 i = 0; i < calls.length; i++) {
             results[i] = _staticCall(true, calls[i].target, calls[i].callData).returnData;
         }
 
         return results;
     }
 
-    function aggregate(bool requireSuccess, address target, bytes[] memory calldatas) public view returns (Result[] memory) {
+    function aggregate(
+        bool requireSuccess,
+        address target,
+        bytes[] memory calldatas
+    ) public view returns (Result[] memory) {
         Result[] memory results = new Result[](calldatas.length);
 
-        for(uint256 i = 0; i < calldatas.length; i++) {
+        for (uint256 i = 0; i < calldatas.length; i++) {
             results[i] = _staticCall(requireSuccess, target, calldatas[i]);
         }
 
         return results;
     }
 
-    function aggregate(bool requireSuccess, address[] memory targets, bytes[] memory calldatas) public view returns (Result[] memory) {
+    function aggregate(
+        bool requireSuccess,
+        address[] memory targets,
+        bytes[] memory calldatas
+    ) public view returns (Result[] memory) {
         Result[] memory results = new Result[](calldatas.length);
 
-        for(uint256 i = 0; i < calldatas.length; i++) {
+        for (uint256 i = 0; i < calldatas.length; i++) {
             results[i] = _staticCall(requireSuccess, targets[i], calldatas[i]);
         }
 
@@ -95,11 +106,10 @@ contract Multicall {
     function aggregate(bool requireSuccess, Call[] memory calls) public view returns (Result[] memory) {
         Result[] memory results = new Result[](calls.length);
 
-        for(uint256 i = 0; i < calls.length; i++) {
+        for (uint256 i = 0; i < calls.length; i++) {
             results[i] = _staticCall(requireSuccess, calls[i].target, calls[i].callData);
         }
 
         return results;
     }
-
 }

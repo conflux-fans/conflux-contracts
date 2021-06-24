@@ -13,13 +13,13 @@ contract SponsorWhitelistControl {
      * @dev get current Sponsored Balance for gas
      * @param contractAddr The address of the sponsored contract
      */
-    function getSponsoredBalanceForGas(address contractAddr) public view returns (uint) {}
+    function getSponsoredBalanceForGas(address contractAddr) public view returns (uint256) {}
 
     /**
      * @dev get current Sponsored Gas fee upper bound
      * @param contractAddr The address of the sponsored contract
      */
-    function getSponsoredGasFeeUpperBound(address contractAddr) public view returns (uint) {}
+    function getSponsoredGasFeeUpperBound(address contractAddr) public view returns (uint256) {}
 
     /**
      * @dev get collateral sponsor address
@@ -31,7 +31,7 @@ contract SponsorWhitelistControl {
      * @dev get current Sponsored Balance for collateral
      * @param contractAddr The address of the sponsored contract
      */
-    function getSponsoredBalanceForCollateral(address contractAddr) public view returns (uint) {}
+    function getSponsoredBalanceForCollateral(address contractAddr) public view returns (uint256) {}
 
     /**
      * @dev check if a user is in a contract's whitelist
@@ -65,7 +65,7 @@ contract SponsorWhitelistControl {
     // Someone will sponsor the gas cost for contract `contractAddr` with an
     // `upper_bound` for a single transaction.
     // ------------------------------------------------------------------------
-    function setSponsorForGas(address contractAddr, uint upperBound) public payable {}
+    function setSponsorForGas(address contractAddr, uint256 upperBound) public payable {}
 
     // ------------------------------------------------------------------------
     // Someone will sponsor the storage collateral for contract `contractAddr`.
