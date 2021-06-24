@@ -19,7 +19,7 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
     mapping(address => EnumerableSet.UintSet) private _ownedTokens;
 
     /**
-     * @dev Returns the total amount of tokens stored by the contract.
+     * @dev Returns the number of different tokenIds stored by the contract.
      */
     function totalSupply() public view virtual override returns (uint256) {
         return _allTokens.length();
