@@ -8,7 +8,7 @@ contract AdminControl {
      * @param contractAddr The address of specific contract
      */
     function getAdmin(address contractAddr) public view returns (address) {}
-    
+
     /**
      * @dev Contract admin set the administrator of contract `contractAddr` to `newAdmin`.
      * @param contractAddr The address of the contract
@@ -16,7 +16,7 @@ contract AdminControl {
      */
     function setAdmin(address contractAddr, address newAdmin) public {}
 
-   /**
+    /**
      * @dev Contract admin destroy contract `contractAddr`.
      * @param contractAddr The contract to be destroied
      */
