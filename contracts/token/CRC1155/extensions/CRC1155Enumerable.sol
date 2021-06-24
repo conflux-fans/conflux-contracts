@@ -89,8 +89,11 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
             // handle for the from address
             if (from == address(0)) {
                 // mint token
-                _allTokens.add(tokenId);
-                _totalSupplies[tokenId] += amount;
+                uint256 supply = _totalSupplies[tokenId];
+                if (supply == 0) {
+                    _allTokens.add(tokenId);
+                }
+                _totalSupplies[tokenId] = supply + amount;
             } else if (balanceOf(from, tokenId) == amount) {
                 // all transferred
                 _ownedTokens[from].remove(tokenId);
