@@ -4,8 +4,9 @@ pragma solidity ^0.8.0;
 
 /**
  * @dev This contract is used to deploy smart contracts with create2 op code.
- * in introduced at https://github.com/Conflux-Chain/CIPs/blob/master/CIPs/cip-31.md
- * is deployed at Conflux's genesis block, it's address is 0x8A3A92281Df6497105513B18543fd3B60c778E40
+ * It was introduced in https://github.com/Conflux-Chain/CIPs/blob/master/CIPs/cip-31.md
+ * It is deployed at Conflux's genesis block
+ * its address is 0x8A3A92281Df6497105513B18543fd3B60c778E40
  */
 contract Create2Factory {
     mapping(address => bool) deployed;
@@ -19,8 +20,8 @@ contract Create2Factory {
     }
 
     /**
-     * @dev get current Sponsored Balance for gas
-     * @param code The code to depoly
+     * @dev Deploy smart contract with create2 op code
+     * @param code The code to deploy
      * @param salt The salt used to generate contract address
      */
     function deploy(bytes memory code, uint256 salt) public returns (address) {
