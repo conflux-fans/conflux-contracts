@@ -1,3 +1,5 @@
+[![NPM Package](https://img.shields.io/npm/v/@confluxfans/contracts.svg)](https://www.npmjs.org/package/@confluxfans/contracts)
+
 # conflux-contracts
 Common useful contracts in Conflux DAPP developments. Code
 
