@@ -9,6 +9,7 @@ pragma solidity ^0.8.0;
  * its address is 0x8A3A92281Df6497105513B18543fd3B60c778E40
  */
 contract Create2Factory {
+    /* solhint-disable private-vars-leading-underscore */
     mapping(address => bool) deployed;
 
     /**
