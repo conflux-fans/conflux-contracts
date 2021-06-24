@@ -9,22 +9,22 @@ import "./Staking.sol";
 /**
  * @dev This library includes initialized Internal Contract instance.
  */
-library IContracts {
+library InternalContracts {
     /**
      * @dev adminControl
      */
-    AdminControl constant adminControl =
+    AdminControl constant ADMIN_CONTROL =
         AdminControl(0x0888000000000000000000000000000000000000);
 
     /**
      * @dev sponsorControl
      */
-    SponsorWhitelistControl constant sponsorControl =
+    SponsorWhitelistControl constant SPONSOR_CONTROL =
         SponsorWhitelistControl(0x0888000000000000000000000000000000000001);
 
     /**
      * @dev staking
      */
-    Staking constant staking =
+    Staking constant STAKING =
         Staking(0x0888000000000000000000000000000000000002);
 }
