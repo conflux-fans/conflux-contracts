@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
  */
 interface ICRC1155Enumerable is IERC1155 {
     /**
-     * @dev Returns the total amount of tokens stored by the contract.
+     * @dev Returns the number of different tokenIds stored by the contract.
      */
     function totalSupply() external view returns (uint256);
 
