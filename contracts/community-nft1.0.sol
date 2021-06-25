@@ -156,9 +156,9 @@ contract TspaceAllnighter is ERC1155, Operator {
         _allTokensIndex[tokenId] = _allTokens.length;
         _allTokens.push(tokenId);
     }
-
+    
     function mint(string memory _metadateUri) public onlyOwner{
-        //require(msg.value == price, "Value error");
+        //require(msg.value == price, "Value error"); //这句用于铸造收费，可加上payable配合使用，一般不用就注释掉
         _tsMint(msg.sender, _metadateUri);
     }
 
@@ -169,7 +169,7 @@ contract TspaceAllnighter is ERC1155, Operator {
         _tsMint(_to, _metadateUri);
     }
 
-    //chy:tspace批量铸造方法，使用默认地址+id.json的方法，直接铸造amount个新的nft。
+    //chy:批量空投方法，使用默认地址+id.json的方法，直接铸造amount个新的nft。
     function batchAddItemByNumber(address _to, uint256 _amount)
         public
         onlyMiner()
@@ -180,6 +180,7 @@ contract TspaceAllnighter is ERC1155, Operator {
         }
     }
 
+    //chy:批量空投方法，使用传入用户地址数组和uri数组。
     function batchAddItemByAddress(
         address[] calldata _initialOwners,
         string[] calldata _uris
