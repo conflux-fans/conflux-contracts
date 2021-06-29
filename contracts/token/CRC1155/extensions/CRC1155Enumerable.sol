@@ -6,9 +6,11 @@ import "./ICRC1155Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+import "@openzeppelin/contracts/utils/math/Math.sol";
 
 abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
     using EnumerableSet for EnumerableSet.UintSet;
+    using Math for uint256;
 
     // All token ids for enumeration.
     EnumerableSet.UintSet private _allTokens;
@@ -31,6 +33,23 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
      */
     function tokenByIndex(uint256 index) public view virtual override returns (uint256) {
         return _allTokens.at(index);
+    }
+
+    /**
+     * @dev Returns token IDs in pagination view.
+     */
+    function tokens(uint256 offset, uint256 limit) public view virtual returns (uint256 total, uint256[] memory tokenIds) {
+        total = totalSupply();
+        if (total == 0 || offset >= total) {
+            return (total, new uint256[](0));
+        }
+
+        uint256 endExclusive = total.min(offset + limit);
+        tokenIds = new uint256[](endExclusive - offset);
+
+        for (uint256 i = offset; i < endExclusive; i++) {
+            tokenIds[i - offset] = tokenByIndex(i);
+        }
     }
 
     /**
@@ -59,6 +78,23 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
      */
     function tokenOfOwnerByIndex(address owner, uint256 index) public view virtual override returns (uint256) {
         return _ownedTokens[owner].at(index);
+    }
+
+    /**
+     * @dev Returns token IDs of specified `owner` in pagination view.
+     */
+    function tokensOf(address owner, uint256 offset, uint256 limit) public view virtual returns (uint256 total, uint256[] memory tokenIds) {
+        total = tokenCountOf(owner);
+        if (total == 0 || offset >= total) {
+            return (total, new uint256[](0));
+        }
+
+        uint256 endExclusive = total.min(offset + limit);
+        tokenIds = new uint256[](endExclusive - offset);
+
+        for (uint256 i = offset; i < endExclusive; i++) {
+            tokenIds[i - offset] = tokenOfOwnerByIndex(owner, i);
+        }
     }
 
     /**
