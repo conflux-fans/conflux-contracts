@@ -5,6 +5,7 @@ pragma solidity ^0.8.0;
 import "./ICRC1155Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
+import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
 abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
     using EnumerableSet for EnumerableSet.UintSet;
@@ -111,5 +112,10 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
                 _ownedTokens[to].add(tokenId);
             }
         }
+    }
+
+    function supportsInterface(bytes4 interfaceId) public view virtual override(IERC165, ERC1155) returns (bool) {
+        return interfaceId == type(ICRC1155Enumerable).interfaceId
+            || super.supportsInterface(interfaceId);
     }
 }
