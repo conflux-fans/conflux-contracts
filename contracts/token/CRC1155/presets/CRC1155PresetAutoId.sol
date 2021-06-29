@@ -38,28 +38,6 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
     }
 
     /**
-     * @dev Creates a new token for `to` with auto-generated token ID.
-     * 
-     * Requirements:
-     *
-     * - the caller must have the `MINTER_ROLE`.
-     */
-    function mint(address to) public virtual {
-        mint(to, 1);
-    }
-
-    /**
-     * @dev Creates `amount` new tokens for `to` with auto-generated token ID.
-     * 
-     * Requirements:
-     *
-     * - the caller must have the `MINTER_ROLE`.
-     */
-    function mint(address to, uint256 amount) public virtual {
-        mint(to, amount, "");
-    }
-
-    /**
      * @dev Creates `amount` new tokens for `to` with auto-generated token ID and additional data.
      * 
      * Requirements:
@@ -69,38 +47,6 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
     function mint(address to, uint256 amount, bytes memory data) public virtual {
         mint(to, _tokenIdTracker.current(), amount, data);
         _tokenIdTracker.increment();
-    }
-
-    /**
-     * @dev Creates tokens with auto-generated token IDs in batch.
-     * @param to address to mint tokens.
-     * @param count number of token IDs to mint, each token id has amount of 1.
-     * 
-     * Requirements:
-     *
-     * - the caller must have the `MINTER_ROLE`.
-     */
-    function mintBatch(address to, uint256 count) public virtual {
-        uint256[] memory amounts = new uint256[](count);
-
-        for (uint i = 0; i < count; i++) {
-            amounts[i] = 1;
-        }
-
-        mintBatch(to, amounts);
-    }
-
-    /**
-     * @dev Creates tokens with auto-generated token IDs in batch.
-     * @param to address to mint tokens.
-     * @param amounts amount for each token ID to mint.
-     * 
-     * Requirements:
-     *
-     * - the caller must have the `MINTER_ROLE`.
-     */
-    function mintBatch(address to, uint256[] memory amounts) public virtual {
-        mintBatch(to, amounts, "");
     }
 
     /**
