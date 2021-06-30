@@ -147,7 +147,6 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
     }
 
     function supportsInterface(bytes4 interfaceId) public view virtual override(IERC165, ERC1155) returns (bool) {
-        return interfaceId == type(ICRC1155Enumerable).interfaceId
-            || super.supportsInterface(interfaceId);
+        return interfaceId == type(ICRC1155Enumerable).interfaceId || super.supportsInterface(interfaceId);
     }
 }
