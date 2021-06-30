@@ -4,6 +4,7 @@
 Common useful contracts in Conflux DAPP developments. Code
 
 * Conflux internal contracts
+* Support Solidity 8.0+, depend on @openzeppelin/contracts 4.0+
 
 
 ## Overview
@@ -27,6 +28,19 @@ contract YourContract {
   }
 }
 ```
+
+
+## Contribute
+There are many ways you can participate and help build high quality software. Check out the [contribution](./CONTRIBUTING.md) guide!
+
+### Compile & Lint
+
+```sh
+$ npm run lint
+$ npm run compile  # or npx hardhat compile
+```
+
+
 
 
 ## License

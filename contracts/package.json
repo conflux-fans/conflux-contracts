@@ -7,6 +7,9 @@
     "/build/contracts/*.json",
     "!/mocks/**/*"
   ],
+  "scripts": {
+    "prepare": "bash ../scripts/prepare-contracts-package.sh"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/conflux-fans/conflux-contracts.git"

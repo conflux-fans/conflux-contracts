@@ -5,3 +5,7 @@ node_modules
 cache
 artifacts
 bin
+coverage
+contracts/README.md
+contracts/build
+build
