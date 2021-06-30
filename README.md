@@ -37,10 +37,16 @@ There are many ways you can participate and help build high quality software. Ch
 
 ```sh
 $ npm run lint
+$ npm run lint:sol:fix  # run this command if lint failed to fix code style issue
 $ npm run compile  # or npx hardhat compile
 ```
 
 
+### How to release version
+
+1. Update `version` field in project root's `package.json` and then run `npm run version` to sync sub folder's (`contracts`) `package.json`
+2. cd `contracts` folder
+3. Run `npm publish --access public` to publish package.
 
 
 ## License

@@ -22,12 +22,11 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
     // Counter to auto generate token ID.
     Counters.Counter private _tokenIdTracker;
 
-    constructor(string memory uri) ERC1155PresetMinterPauser(uri) {
-    }
+    constructor(string memory uri) ERC1155PresetMinterPauser(uri) {}
 
     /**
      * @dev Update the URI for all tokens.
-     * 
+     *
      * Requirements:
      *
      * - the caller must have the `DEFAULT_ADMIN_ROLE`.
@@ -39,7 +38,7 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
 
     /**
      * @dev Creates a new token for `to` with auto-generated token ID.
-     * 
+     *
      * Requirements:
      *
      * - the caller must have the `MINTER_ROLE`.
@@ -50,7 +49,7 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
 
     /**
      * @dev Creates `amount` new tokens for `to` with auto-generated token ID.
-     * 
+     *
      * Requirements:
      *
      * - the caller must have the `MINTER_ROLE`.
@@ -61,12 +60,16 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
 
     /**
      * @dev Creates `amount` new tokens for `to` with auto-generated token ID and additional data.
-     * 
+     *
      * Requirements:
      *
      * - the caller must have the `MINTER_ROLE`.
      */
-    function mint(address to, uint256 amount, bytes memory data) public virtual {
+    function mint(
+        address to,
+        uint256 amount,
+        bytes memory data
+    ) public virtual {
         mint(to, _tokenIdTracker.current(), amount, data);
         _tokenIdTracker.increment();
     }
@@ -75,7 +78,7 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
      * @dev Creates tokens with auto-generated token IDs in batch.
      * @param to address to mint tokens.
      * @param count number of token IDs to mint, each token id has amount of 1.
-     * 
+     *
      * Requirements:
      *
      * - the caller must have the `MINTER_ROLE`.
@@ -83,7 +86,7 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
     function mintBatch(address to, uint256 count) public virtual {
         uint256[] memory amounts = new uint256[](count);
 
-        for (uint i = 0; i < count; i++) {
+        for (uint256 i = 0; i < count; i++) {
             amounts[i] = 1;
         }
 
@@ -94,7 +97,7 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
      * @dev Creates tokens with auto-generated token IDs in batch.
      * @param to address to mint tokens.
      * @param amounts amount for each token ID to mint.
-     * 
+     *
      * Requirements:
      *
      * - the caller must have the `MINTER_ROLE`.
@@ -108,15 +111,19 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
      * @param to address to mint tokens.
      * @param amounts amount for each token ID to mint.
      * @param data Additional data used when `to` address is a contract.
-     * 
+     *
      * Requirements:
      *
      * - the caller must have the `MINTER_ROLE`.
      */
-    function mintBatch(address to, uint256[] memory amounts, bytes memory data) public virtual {
+    function mintBatch(
+        address to,
+        uint256[] memory amounts,
+        bytes memory data
+    ) public virtual {
         uint256[] memory tokenIds = new uint256[](amounts.length);
 
-        for (uint i = 0; i < amounts.length; i++) {
+        for (uint256 i = 0; i < amounts.length; i++) {
             tokenIds[i] = _tokenIdTracker.current();
             _tokenIdTracker.increment();
         }
@@ -138,10 +145,8 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
         uint256[] memory ids,
         uint256[] memory amounts,
         bytes memory data
-    )
-        internal virtual override(ERC1155PresetMinterPauser, CRC1155Enumerable)
-    {
-        for (uint i = 0; i < amounts.length; i++) {
+    ) internal virtual override(ERC1155PresetMinterPauser, CRC1155Enumerable) {
+        for (uint256 i = 0; i < amounts.length; i++) {
             require(amounts[i] > 0, "CRC1155Preset: amount is zero");
         }
 
@@ -151,8 +156,13 @@ contract CRC1155PresetAutoId is ERC1155PresetMinterPauser, CRC1155Enumerable {
     /**
      * @dev See {IERC165-supportsInterface}.
      */
-    function supportsInterface(bytes4 interfaceId) public view virtual override(ERC1155PresetMinterPauser, CRC1155Enumerable) returns (bool) {
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        virtual
+        override(ERC1155PresetMinterPauser, CRC1155Enumerable)
+        returns (bool)
+    {
         return super.supportsInterface(interfaceId);
     }
-
 }
