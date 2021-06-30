@@ -3,14 +3,27 @@
   "version": "0.1.0",
   "description": "Common useful contracts in Conflux DAPP developments",
   "main": "index.js",
+  "files": [
+    "/contracts/**/*.sol",
+    "/build/contracts/*.json",
+    "!/contracts/mocks/**/*"
+  ],
   "scripts": {
     "compile": "hardhat compile",
+    "coverage": "hardhat coverage",
     "lint": "npm run lint:js && npm run lint:sol",
     "lint:fix": "npm run lint:js:fix && npm run lint:sol:fix",
     "lint:js": "eslint --ignore-path .gitignore .",
     "lint:js:fix": "eslint --ignore-path .gitignore . --fix",
     "lint:sol": "solhint 'contracts/**/*.sol' && prettier -c 'contracts/**/*.sol'",
-    "lint:sol:fix": "prettier --write \"contracts/**/*.sol\""
+    "lint:sol:fix": "prettier --write \"contracts/**/*.sol\"",
+    "docs": "oz-docs",
+    "docs:watch": "npm run docs watch contracts 'docs/*.hbs' docs/helpers.js",
+    "prepare-docs": "scripts/prepare-docs.sh",
+    "prepublish": "rimraf build contracts/build artifacts cache",
+    "prepare": "env COMPILE_MODE=production npm run compile",
+    "prepack": "scripts/prepack.sh",
+    "version": "scripts/release/version.sh"
   },
   "repository": {
     "type": "git",
@@ -30,7 +43,6 @@
     "security"
   ],
   "devDependencies": {
-    "hardhat": "^2.3.0",
     "@openzeppelin/contracts": "^4.1.0",
     "eslint": "^6.5.1",
     "eslint-config-standard": "^14.1.1",
@@ -39,9 +51,12 @@
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "hardhat": "^2.3.0",
     "prettier": "^2.3.0",
     "prettier-plugin-solidity": "^1.0.0-beta.13",
-    "solidity-docgen": "^0.5.3",
-    "solhint": "^3.3.6"
+    "solhint": "^3.3.6",
+    "solidity-coverage": "^0.7.16",
+    "rimraf": "^3.0.2",
+    "solidity-docgen": "^0.5.3"
   }
 }
