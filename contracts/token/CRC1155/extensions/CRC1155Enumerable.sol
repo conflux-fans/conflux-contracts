@@ -38,7 +38,12 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
     /**
      * @dev Returns token IDs in pagination view.
      */
-    function tokens(uint256 offset, uint256 limit) public view virtual returns (uint256 total, uint256[] memory tokenIds) {
+    function tokens(uint256 offset, uint256 limit)
+        public
+        view
+        virtual
+        returns (uint256 total, uint256[] memory tokenIds)
+    {
         total = totalSupply();
         if (total == 0 || offset >= total) {
             return (total, new uint256[](0));
@@ -83,7 +88,11 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
     /**
      * @dev Returns token IDs of specified `owner` in pagination view.
      */
-    function tokensOf(address owner, uint256 offset, uint256 limit) public view virtual returns (uint256 total, uint256[] memory tokenIds) {
+    function tokensOf(
+        address owner,
+        uint256 offset,
+        uint256 limit
+    ) public view virtual returns (uint256 total, uint256[] memory tokenIds) {
         total = tokenCountOf(owner);
         if (total == 0 || offset >= total) {
             return (total, new uint256[](0));
