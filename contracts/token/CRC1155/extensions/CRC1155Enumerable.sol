@@ -38,7 +38,12 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
     /**
      * @dev Returns token IDs in pagination view.
      */
-    function tokens(uint256 offset, uint256 limit) public view virtual returns (uint256 total, uint256[] memory tokenIds) {
+    function tokens(uint256 offset, uint256 limit)
+        public
+        view
+        virtual
+        returns (uint256 total, uint256[] memory tokenIds)
+    {
         total = totalSupply();
         if (total == 0 || offset >= total) {
             return (total, new uint256[](0));
@@ -83,7 +88,11 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
     /**
      * @dev Returns token IDs of specified `owner` in pagination view.
      */
-    function tokensOf(address owner, uint256 offset, uint256 limit) public view virtual returns (uint256 total, uint256[] memory tokenIds) {
+    function tokensOf(
+        address owner,
+        uint256 offset,
+        uint256 limit
+    ) public view virtual returns (uint256 total, uint256[] memory tokenIds) {
         total = tokenCountOf(owner);
         if (total == 0 || offset >= total) {
             return (total, new uint256[](0));
@@ -107,11 +116,7 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
         uint256[] memory ids,
         uint256[] memory amounts,
         bytes memory data
-    )
-        internal
-        virtual
-        override
-    {
+    ) internal virtual override {
         super._beforeTokenTransfer(operator, from, to, ids, amounts, data);
 
         for (uint256 i = 0; i < ids.length; ++i) {
@@ -151,7 +156,6 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
     }
 
     function supportsInterface(bytes4 interfaceId) public view virtual override(IERC165, ERC1155) returns (bool) {
-        return interfaceId == type(ICRC1155Enumerable).interfaceId
-            || super.supportsInterface(interfaceId);
+        return interfaceId == type(ICRC1155Enumerable).interfaceId || super.supportsInterface(interfaceId);
     }
 }

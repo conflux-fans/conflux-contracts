@@ -13,18 +13,16 @@ library InternalContracts {
     /**
      * @dev adminControl
      */
-    AdminControl constant ADMIN_CONTROL =
-        AdminControl(0x0888000000000000000000000000000000000000);
+    AdminControl public constant ADMIN_CONTROL = AdminControl(0x0888000000000000000000000000000000000000);
 
     /**
      * @dev sponsorControl
      */
-    SponsorWhitelistControl constant SPONSOR_CONTROL =
+    SponsorWhitelistControl public constant SPONSOR_CONTROL =
         SponsorWhitelistControl(0x0888000000000000000000000000000000000001);
 
     /**
      * @dev staking
      */
-    Staking constant STAKING =
-        Staking(0x0888000000000000000000000000000000000002);
+    Staking public constant STAKING = Staking(0x0888000000000000000000000000000000000002);
 }

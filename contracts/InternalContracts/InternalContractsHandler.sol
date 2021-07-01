@@ -11,7 +11,6 @@ import "./InternalContractsLib.sol";
  * @dev Provides default configurations for Conflux internal contracts.
  */
 abstract contract InternalContractsHandler is ERC1820Context {
-
     constructor() {
         if (!_isCfxChain()) {
             return;
@@ -24,10 +23,6 @@ abstract contract InternalContractsHandler is ERC1820Context {
 
         // remove contract admin
         InternalContracts.ADMIN_CONTROL.setAdmin(address(this), address(0));
-        require(
-            InternalContracts.ADMIN_CONTROL.getAdmin(address(this)) == address(0),
-            "require admin == null"
-        );
+        require(InternalContracts.ADMIN_CONTROL.getAdmin(address(this)) == address(0), "require admin == null");
     }
-
 }
