@@ -9,3 +9,4 @@ coverage
 contracts/README.md
 contracts/build
 build
+.DS_Store
