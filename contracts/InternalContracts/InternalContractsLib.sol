@@ -5,9 +5,8 @@ pragma solidity ^0.8.0;
 import "./AdminControl.sol";
 import "./SponsorWhitelistControl.sol";
 import "./Staking.sol";
-import "./EpochNumberContext.sol";
+import "./ConfluxContext.sol";
 import "./PoSRegister.sol";
-import "./ReentrancyConfig.sol";
 
 /**
  * @dev This library includes initialized Internal Contract instance.
@@ -30,14 +29,9 @@ library InternalContracts {
     Staking public constant STAKING = Staking(0x0888000000000000000000000000000000000002);
 
     /**
-     * @dev EpochNumberContext
+     * @dev ConfluxContext
      */
-    Context public constant EPOCH_CONTEXT = Context(0x0888000000000000000000000000000000000003);
-
-    /**
-     * @dev Reentrancy
-     */
-    ReentrancyConfig public constant REENTRANCY = ReentrancyConfig(0x0888000000000000000000000000000000000004);
+    ConfluxContext public constant CONFLUX_CONTEXT = ConfluxContext(0x0888000000000000000000000000000000000004);
 
     /**
      * @dev PoSRegister
