@@ -16,7 +16,7 @@ contract Create2Factory {
      * @dev Check whether a address is deployed with Create2Factory
      * @param addr The address to check
      */
-    function isDeployed(address addr) public view returns (bool) {
+    function isDeployed(address addr) public view virtual returns (bool) {
         return deployed[addr];
     }
 
@@ -25,7 +25,7 @@ contract Create2Factory {
      * @param code The code to deploy
      * @param salt The salt used to generate contract address
      */
-    function deploy(bytes memory code, uint256 salt) public returns (address) {
+    function deploy(bytes memory code, uint256 salt) public virtual returns (address) {
         address addr;
         bool success = true;
         assembly {
