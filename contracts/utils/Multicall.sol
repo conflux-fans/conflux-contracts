@@ -24,7 +24,7 @@ contract Multicall {
         bool requireSuccess,
         address target,
         bytes memory data
-    ) internal view returns (Result memory) {
+    ) internal virtual view returns (Result memory) {
         require(target.isContract(), "Multicall: static call to non-contract");
 
         (bool success, bytes memory returnData) = target.staticcall(data);
@@ -43,7 +43,7 @@ contract Multicall {
         return Result(success, returnData);
     }
 
-    function aggregate(address target, bytes[] memory calldatas) public view returns (bytes[] memory) {
+    function aggregate(address target, bytes[] memory calldatas) public view virtual returns (bytes[] memory) {
         bytes[] memory results = new bytes[](calldatas.length);
 
         for (uint256 i = 0; i < calldatas.length; i++) {
@@ -53,7 +53,7 @@ contract Multicall {
         return results;
     }
 
-    function aggregate(address[] memory targets, bytes[] memory calldatas) public view returns (bytes[] memory) {
+    function aggregate(address[] memory targets, bytes[] memory calldatas) public view virtual returns (bytes[] memory) {
         require(targets.length == calldatas.length, "targets and calldatas length mismatch");
 
         bytes[] memory results = new bytes[](calldatas.length);
@@ -65,7 +65,7 @@ contract Multicall {
         return results;
     }
 
-    function aggregate(Call[] memory calls) public view returns (bytes[] memory) {
+    function aggregate(Call[] memory calls) public view virtual returns (bytes[] memory) {
         bytes[] memory results = new bytes[](calls.length);
 
         for (uint256 i = 0; i < calls.length; i++) {
@@ -79,7 +79,7 @@ contract Multicall {
         bool requireSuccess,
         address target,
         bytes[] memory calldatas
-    ) public view returns (Result[] memory) {
+    ) public view virtual returns (Result[] memory) {
         Result[] memory results = new Result[](calldatas.length);
 
         for (uint256 i = 0; i < calldatas.length; i++) {
@@ -93,7 +93,7 @@ contract Multicall {
         bool requireSuccess,
         address[] memory targets,
         bytes[] memory calldatas
-    ) public view returns (Result[] memory) {
+    ) public view virtual returns (Result[] memory) {
         Result[] memory results = new Result[](calldatas.length);
 
         for (uint256 i = 0; i < calldatas.length; i++) {
@@ -103,7 +103,7 @@ contract Multicall {
         return results;
     }
 
-    function aggregate(bool requireSuccess, Call[] memory calls) public view returns (Result[] memory) {
+    function aggregate(bool requireSuccess, Call[] memory calls) public view virtual returns (Result[] memory) {
         Result[] memory results = new Result[](calls.length);
 
         for (uint256 i = 0; i < calls.length; i++) {
