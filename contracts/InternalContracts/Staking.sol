@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.15;
 
-contract Staking {
+interface Staking {
     /*** Query Functions ***/
     /**
      * @dev get user's staking balance
      * @param user The address of specific user
      */
-    function getStakingBalance(address user) public view returns (uint256) {}
+    function getStakingBalance(address user) external view returns (uint256);
 
     /**
      * @dev get user's locked staking balance at given blockNumber
@@ -18,7 +18,7 @@ contract Staking {
     // Note: if the blockNumber is less than the current block number, function
     // will return current locked staking balance.
     // ------------------------------------------------------------------------
-    function getLockedStakingBalance(address user, uint256 blockNumber) public view returns (uint256) {}
+    function getLockedStakingBalance(address user, uint256 blockNumber) external view returns (uint256);
 
     /**
      * @dev get user's vote power staking balance at given blockNumber
@@ -29,11 +29,11 @@ contract Staking {
     // Note: if the blockNumber is less than the current block number, function
     // will return current vote power.
     // ------------------------------------------------------------------------
-    function getVotePower(address user, uint256 blockNumber) public view returns (uint256) {}
+    function getVotePower(address user, uint256 blockNumber) external view returns (uint256);
 
-    function deposit(uint256 amount) external {}
+    function deposit(uint256 amount) external payable;
 
-    function withdraw(uint256 amount) external {}
+    function withdraw(uint256 amount) external;
 
-    function voteLock(uint256 amount, uint256 unlockBlockNumber) external {}
+    function voteLock(uint256 amount, uint256 unlockBlockNumber) external;
 }
