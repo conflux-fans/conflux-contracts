@@ -31,7 +31,7 @@ interface Staking {
     // ------------------------------------------------------------------------
     function getVotePower(address user, uint256 blockNumber) external view returns (uint256);
 
-    function deposit(uint256 amount) external payable;
+    function deposit(uint256 amount) external;
 
     function withdraw(uint256 amount) external;
 
