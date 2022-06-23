@@ -24,7 +24,7 @@ contract Multicall {
         bool requireSuccess,
         address target,
         bytes memory data
-    ) internal virtual view returns (Result memory) {
+    ) internal view virtual returns (Result memory) {
         require(target.isContract(), "Multicall: static call to non-contract");
 
         (bool success, bytes memory returnData) = target.staticcall(data);
@@ -53,7 +53,12 @@ contract Multicall {
         return results;
     }
 
-    function aggregate(address[] memory targets, bytes[] memory calldatas) public view virtual returns (bytes[] memory) {
+    function aggregate(address[] memory targets, bytes[] memory calldatas)
+        public
+        view
+        virtual
+        returns (bytes[] memory)
+    {
         require(targets.length == calldatas.length, "targets and calldatas length mismatch");
 
         bytes[] memory results = new bytes[](calldatas.length);
