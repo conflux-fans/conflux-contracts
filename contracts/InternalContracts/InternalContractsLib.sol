@@ -7,6 +7,7 @@ import "./SponsorWhitelistControl.sol";
 import "./Staking.sol";
 import "./ConfluxContext.sol";
 import "./PoSRegister.sol";
+import "./CrossSpaceCall.sol";
 
 /**
  * @dev This library includes initialized Internal Contract instance.
@@ -37,4 +38,9 @@ library InternalContracts {
      * @dev PoSRegister
      */
     PoSRegister public constant POS_REGISTER = PoSRegister(0x0888000000000000000000000000000000000005);
+
+    /**
+     * @dev CrossSpaceCall
+     */
+    CrossSpaceCall public constant CROSS_SPACE_CALL = CrossSpaceCall(0x0888000000000000000000000000000000000006);
 }
