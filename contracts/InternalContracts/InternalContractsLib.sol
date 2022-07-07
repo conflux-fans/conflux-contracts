@@ -8,6 +8,7 @@ import "./Staking.sol";
 import "./ConfluxContext.sol";
 import "./PoSRegister.sol";
 import "./CrossSpaceCall.sol";
+import "./ParamsControl.sol";
 
 /**
  * @dev This library includes initialized Internal Contract instance.
@@ -43,4 +44,9 @@ library InternalContracts {
      * @dev CrossSpaceCall
      */
     CrossSpaceCall public constant CROSS_SPACE_CALL = CrossSpaceCall(0x0888000000000000000000000000000000000006);
+
+    /**
+     * @dev ParamsControl
+     */
+    ParamsControl public constant PARAMS_CONTROL = ParamsControl(0x0888000000000000000000000000000000000007);
 }
