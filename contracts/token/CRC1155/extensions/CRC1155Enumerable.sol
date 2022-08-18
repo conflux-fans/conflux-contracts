@@ -32,6 +32,7 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
      * @dev Returns the `index`-th tokenId stored by the contract.
      */
     function tokenByIndex(uint256 index) public view virtual override returns (uint256) {
+        require(_allTokens.length() > index, "exceeds tokenId length");
         return _allTokens.at(index);
     }
 
@@ -82,6 +83,7 @@ abstract contract CRC1155Enumerable is ERC1155, ICRC1155Enumerable {
      * @dev Returns the `index`-th tokenId held by `owner`.
      */
     function tokenOfOwnerByIndex(address owner, uint256 index) public view virtual override returns (uint256) {
+        require(_ownedTokens[owner].length() > index, "exceeds tokenId length");
         return _ownedTokens[owner].at(index);
     }
 
