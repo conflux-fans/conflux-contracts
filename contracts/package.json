@@ -1,7 +1,7 @@
 {
   "name": "@confluxfans/contracts",
   "description": "Common useful contracts in Conflux DAPP developments",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "files": [
     "**/*.sol",
     "/build/contracts/*.json",
