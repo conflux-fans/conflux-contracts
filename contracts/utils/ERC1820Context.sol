@@ -15,7 +15,7 @@ abstract contract ERC1820Context {
     address private constant _ERC1820_REGISTRY_CFX = 0x88887eD889e776bCBe2f0f9932EcFaBcDfCd1820;
 
     function _isCfxChain() internal view virtual returns (bool) {
-        return !_ERC1820_REGISTRY_ETH.isContract();
+        return _ERC1820_REGISTRY_CFX.isContract();
     }
 
     function _erc1820Registry() internal view virtual returns (IERC1820Registry) {
