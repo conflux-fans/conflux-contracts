@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Forked from
 // OpenZeppelin Contracts (last updated v4.7.0) (utils/Create2.sol)
 
 pragma solidity ^0.8.0;
@@ -79,5 +80,10 @@ library Create2 {
             mstore8(start, 0xff)
             addr := keccak256(start, 85)
         }
+        // make addr start as 0x8
+        // addr = addr 
+        //      & 0x0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 
+        //      | 0x8000000000000000000000000000000000000000
+        addr = address(uint160(addr) & ((1 << 156) - 1) | (1 << 159));
     }
 }

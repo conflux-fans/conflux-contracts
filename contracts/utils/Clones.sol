@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Forked from
 // OpenZeppelin Contracts (last updated v4.7.0) (proxy/Clones.sol)
 
 pragma solidity ^0.8.0;
@@ -74,6 +75,11 @@ library Clones {
             mstore(add(ptr, 0x78), keccak256(add(ptr, 0x0c), 0x37))
             predicted := keccak256(add(ptr, 0x43), 0x55)
         }
+        // make addr start as 0x8
+        // addr = addr 
+        //      & 0x0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 
+        //      | 0x8000000000000000000000000000000000000000
+        predicted = address(uint160(predicted) & ((1 << 156) - 1) | (1 << 159));
     }
 
     /**
