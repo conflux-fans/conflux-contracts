@@ -11,7 +11,7 @@ Common useful contracts in Conflux DAPP developments. Code
 
 ### Install
 ```sh
-$ npm install @confluxfans/contracts
+npm install @confluxfans/contracts
 ```
 
 ### How to Use
