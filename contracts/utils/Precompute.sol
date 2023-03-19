@@ -12,12 +12,11 @@ pragma solidity ^0.8.0;
  * Modified from OpenZeppelin Contracts' computeAddress of Create2.sol
  */
 library Precompute {
-
     function changeEndian(uint256 val) internal pure returns (uint256) {
         bytes32 input = bytes32(val);
         uint256 result = 0;
         for (uint8 i = 0; i < 32; i = i + 1) {
-            result = result | uint256(uint256(uint8(input[i])) << (i*8));
+            result = result | uint256(uint256(uint8(input[i])) << (i * 8));
         }
         return result;
     }
@@ -54,6 +53,6 @@ library Precompute {
             addr := keccak256(start, 85)
         }
         // convert the first byte to 0x8
-        addr = address(uint160(addr) & ((1 << 156) - 1) | (1 << 159));
+        addr = address((uint160(addr) & ((1 << 156) - 1)) | (1 << 159));
     }
 }

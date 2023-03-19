@@ -4,7 +4,6 @@ pragma solidity >=0.5.0;
 // CrossSpaceCall address is: 0x0888000000000000000000000000000000000006
 
 interface CrossSpaceCall {
-
     event Call(bytes20 indexed sender, bytes20 indexed receiver, uint256 value, uint256 nonce, bytes data);
 
     event Create(bytes20 indexed sender, bytes20 indexed contract_address, uint256 value, uint256 nonce, bytes init);

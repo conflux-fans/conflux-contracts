@@ -2,17 +2,16 @@
 pragma solidity >=0.8.0;
 
 /**
-* This is a fake empty contract for testing purpose.
-*/ 
+ * This is a fake empty contract for testing purpose.
+ */
 contract MockPoSRegister {
+    mapping(address => bytes32) private addressToIdentifierMap;
+    mapping(bytes32 => address) private identifierToAddressMap;
 
-  mapping(address => bytes32) private addressToIdentifierMap;
-  mapping(bytes32 => address) private identifierToAddressMap;
+    mapping(address => uint64) private userVotes;
+    mapping(address => uint64) private userUnlockedVotes;
 
-  mapping(address => uint64) private userVotes;
-  mapping(address => uint64) private userUnlockedVotes;
-
-  /* function _addressToBytes(address a) public pure returns (bytes memory b){
+    /* function _addressToBytes(address a) public pure returns (bytes memory b){
     assembly {
         let m := mload(0x40)
         a := and(a, 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF)
@@ -22,7 +21,7 @@ contract MockPoSRegister {
     }
   } */
 
-  /**
+    /**
      * @dev Register PoS account
      * @param indentifier - PoS account address to register
      * @param votePower - votes count
@@ -37,11 +36,11 @@ contract MockPoSRegister {
         bytes calldata vrfPubKey,
         bytes[2] calldata blsPubKeyProof
     ) public {
-      // bytes32 _identifier = keccak256(_addressToBytes(msg.sender));
-      addressToIdentifierMap[msg.sender] = indentifier;
-      identifierToAddressMap[indentifier] = msg.sender;
-      userVotes[msg.sender] += votePower;
-      emit Register(indentifier, blsPubKey, vrfPubKey);
+        // bytes32 _identifier = keccak256(_addressToBytes(msg.sender));
+        addressToIdentifierMap[msg.sender] = indentifier;
+        identifierToAddressMap[indentifier] = msg.sender;
+        userVotes[msg.sender] += votePower;
+        emit Register(indentifier, blsPubKey, vrfPubKey);
     }
 
     /**
@@ -49,8 +48,8 @@ contract MockPoSRegister {
      * @param votePower - count of votes to increase
      */
     function increaseStake(uint64 votePower) public {
-      userVotes[msg.sender] += votePower;
-      emit IncreaseStake(addressToIdentifierMap[msg.sender], votePower);
+        userVotes[msg.sender] += votePower;
+        emit IncreaseStake(addressToIdentifierMap[msg.sender], votePower);
     }
 
     /**
@@ -58,9 +57,9 @@ contract MockPoSRegister {
      * @param votePower - count of votes to retire
      */
     function retire(uint64 votePower) public {
-      // TODO add delay seven days logic
-      userUnlockedVotes[msg.sender] += votePower;
-      emit Retire(addressToIdentifierMap[msg.sender], votePower);
+        // TODO add delay seven days logic
+        userUnlockedVotes[msg.sender] += votePower;
+        emit Retire(addressToIdentifierMap[msg.sender], votePower);
     }
 
     /**
@@ -68,8 +67,8 @@ contract MockPoSRegister {
      * @param identifier - PoS address
      */
     function getVotes(bytes32 identifier) public view returns (uint256, uint256) {
-      address _address = identifierToAddressMap[identifier];
-      return (userVotes[_address], userUnlockedVotes[_address]);
+        address _address = identifierToAddressMap[identifier];
+        return (userVotes[_address], userUnlockedVotes[_address]);
     }
 
     /**
@@ -77,7 +76,7 @@ contract MockPoSRegister {
      * @param identifier - PoS address
      */
     function identifierToAddress(bytes32 identifier) public view returns (address) {
-      return identifierToAddressMap[identifier];
+        return identifierToAddressMap[identifier];
     }
 
     /**
@@ -85,7 +84,7 @@ contract MockPoSRegister {
      * @param addr - PoW address
      */
     function addressToIdentifier(address addr) public view returns (bytes32) {
-      return addressToIdentifierMap[addr];
+        return addressToIdentifierMap[addr];
     }
 
     /**

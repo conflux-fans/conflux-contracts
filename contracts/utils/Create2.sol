@@ -81,9 +81,9 @@ library Create2 {
             addr := keccak256(start, 85)
         }
         // make addr start as 0x8
-        // addr = addr 
-        //      & 0x0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 
+        // addr = addr
+        //      & 0x0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         //      | 0x8000000000000000000000000000000000000000
-        addr = address(uint160(addr) & ((1 << 156) - 1) | (1 << 159));
+        addr = address((uint160(addr) & ((1 << 156) - 1)) | (1 << 159));
     }
 }

@@ -76,10 +76,10 @@ library Clones {
             predicted := keccak256(add(ptr, 0x43), 0x55)
         }
         // make addr start as 0x8
-        // addr = addr 
-        //      & 0x0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 
+        // addr = addr
+        //      & 0x0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         //      | 0x8000000000000000000000000000000000000000
-        predicted = address(uint160(predicted) & ((1 << 156) - 1) | (1 << 159));
+        predicted = address((uint160(predicted) & ((1 << 156) - 1)) | (1 << 159));
     }
 
     /**
