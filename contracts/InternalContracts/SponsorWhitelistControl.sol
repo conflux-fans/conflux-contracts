@@ -81,4 +81,10 @@ interface SponsorWhitelistControl {
     // Remove commission privilege for address `user` from some contract.
     // ------------------------------------------------------------------------
     function removePrivilege(address[] memory) external;
+
+    /**
+     * @dev get current available storage points for collateral (activated after CIP-118)
+     * @param contractAddr The address of the sponsored contract
+     */
+    function getAvailableStoragePoints(address contractAddr) external view returns (uint256);
 }
